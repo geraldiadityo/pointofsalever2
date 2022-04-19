@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custome_tags %}
+
+{% block title_app %}
+    {{page_title}}
+{% endblock title_app %}
+
+{% block content %}
+    <div class="box-header">
+        <h3 class="box-title">{{page_title}}</h3>
+        <div class="pull-right">
+            <div class="row">
+                <div class="col-md-4">
+                    <select name="tanggal-select" id="tanggalselect" class="form-control">
+                        <option value="0">Pilih Tanggal</option>
+                        
+                        {% for datatanggal in tanggal %}
+                            <option value="{{datatanggal|date:'Y-m-d'}}">{{datatanggal|date:'Y-m-d'}}</option>
+                        {% endfor %}
+                            
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select name="bulan-select" id="bulanselect" class="form-control">
+                        <option value="0">Pilih Bulan</option>
+                        
+                        {% for databulan in bulan %}
+                            <option value="{{databulan|date:'Y-m'}}">{{databulan|date:'Y-m'}}</option>
+                        {% endfor %}
+                            
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select name="tahun-select" id="tahunselect" class="form-control">
+                        <option value="0">Pilih Tahun</option>
+                        
+                        {% for datatahun in tahun %}
+                            <option value="{{datatahun|date:'Y'}}">{{datatahun|date:'Y'}}</option>
+                        {% endfor %}
+                            
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body table-responsive">
+        <table class="table table-bordered table-striped" id="table-stokin">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tanggal</th>
+                    <th>Product</th>
+                    <th>Unit</th>
+                    <th>Supplier</th>
+                    <th>Harga Beli</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'laporan/table_stok_in.html' %}
+            </tbody>
+        </table>
+    </div>
+    <div class="box-footer">
+        <div class="pull-right">
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-primary" href="{% url 'laporan:stok_view_pdf' 'in' '0' %}" id="view_report">
+                        <span class="fa fa-eye"></span> Preview
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn btn-success" href="{% url 'laporan:stok_download_pdf' 'in' '0' %}" id="download_report">
+                        <span class="fa fa-print"></span> Cetak
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script src="{% static 'js/laporan/stokin_my.js' %}"></script>
+{% endblock javascripts %}
+    

@@ -1,0 +1,19 @@
+{% load custome_tags %}
+
+{% for datastok in stok %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{datastok.tanggal}}</td>
+        <td>{{datastok.product}}</td>
+        <td>{{datastok.product.unit}}</td>
+        <td>{{datastok.supplier}}</td>
+        <td>{{datastok.hargabeli | to_rupiah}}</td>
+        <td>{{datastok.qty}}</td>
+        <td>{{datastok.total | to_rupiah}}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="7" class="text-center bg-warning">Empty Data</td>
+    </tr>
+{% endfor %}
+    

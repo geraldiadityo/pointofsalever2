@@ -1,0 +1,18 @@
+{% load custome_tags %}
+
+{% for datasale in sale %}
+    <tr>
+        <td>{{foorloop.counter}}</td>
+        <td>{{datasale.tanggal}}</td>
+        <td>{{datasale.invoice}}</td>
+        <td>{{datasale.totalharga|to_rupiah}}</td>
+        <td>{{datasale.discount|to_rupiah}}</td>
+        <td>{{datasale.total_bayar|to_rupiah}}</td>
+        <td>{{datasale.total_pendapatan|to_rupiah}}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="7" class="text-center bg-warning">Empty Data</td>
+    </tr>
+{% endfor %}
+    

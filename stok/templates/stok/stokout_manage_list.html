@@ -1,0 +1,21 @@
+
+{% for data in datastok %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.product}}</td>
+        <td>{{data.qty}}</td>
+        <td>
+            <button type="button" class="btn btn-default js-view-detail-stokout" data-url="{% url 'stok:detail-stokin' data.id %}">
+                <span class="fa fa-eye"></span> Detail
+            </button>
+            <button type="button" class="btn btn-danger js-delete-stokout" data-url="{% url 'stok:delete-stok' data.id %}">
+                <span class="fa fa-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4" class="bg-warning text-center">No Data</td>
+    </tr>
+{% endfor %}
+    

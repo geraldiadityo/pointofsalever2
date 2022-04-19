@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_app %}
+    {{page_title}}
+{% endblock title_app %}
+
+{% block content %}
+    <div class="box-header">
+        <h3 class="box-title">Unit Manage</h3>
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary js-create-unit" data-url="{% url 'p_unit:create' %}">
+                <span class="fa fa-plus-circle"></span> Tambah
+            </button>
+        </div>
+    </div>
+    <div class="box-body table-responsive">
+        <table class="table table-bordered table-striped" id="table-unit">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nama</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'p_unit/unit_manage_list.html' %}
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modal-unit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script src="{% static 'js/unit/unit_my.js' %}"></script>
+{% endblock javascripts %}
+    

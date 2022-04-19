@@ -1,0 +1,37 @@
+{% load custome_tags %}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Detail Stok {{tipe}}</h4>
+</div>
+<div class="modal-body table-responsive">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Nama Product</td>
+            <td>{{stok_item.product}}</td>
+        </tr>
+        <tr>
+            <td>Detail</td>
+            <td>{{stok_item.detail}}</td>
+        </tr>
+            <td>Quantity</td>
+            <td>{{stok_item.qty}}</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{{stok_item.total | to_rupiah}}</td>
+        </tr>
+        <tr>
+            <td>Tanggal</td>
+            <td>{{stok_item.tanggal}}</td>
+        </tr>
+        <tr>
+            <td>Tanggal Expired</td>
+            <td>{{stok_item.expired_date | date:'Y-m-d'}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

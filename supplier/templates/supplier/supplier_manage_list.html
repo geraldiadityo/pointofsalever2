@@ -1,0 +1,24 @@
+
+{% for data in supplier %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.nama}}</td>
+        <td>{{data.telp}}</td>
+        <td>{{data.alamat}}</td>
+        <td>{{data.deskripsi}}</td>
+        <td>
+            <button type="button" class="btn btn-warning js-update-supplier" data-url="{% url 'supplier:update' data.id %}">
+                <span class="fa fa-pencil-square"></span> Edit
+            </button>
+            <button type="button" class="btn btn-danger js-delete-supplier" data-url="{% url 'supplier:delete' data.id %}">
+                <span class="fa fa-trash-o"></span> Delete
+            </button>
+        </td>
+    </tr>
+    
+{% empty %}
+    <tr>
+        <td colspan="6" class="text-center bg-warning">No Data</td>
+    </tr>
+{% endfor %}
+

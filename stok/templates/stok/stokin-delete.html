@@ -1,0 +1,16 @@
+<form action="{% url 'stok:delete-stok' stok.id %}" method="POST" class="js-stok-delete-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Delete Stok {{tipe}}</h4>
+    </div>
+    <div class="modal-body">
+        <p class="lead">Apakah anda yakin untuk menghapus stok <strong>{{stok.tanggal}}</strong> ? </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+</form>

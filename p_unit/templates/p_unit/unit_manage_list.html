@@ -1,0 +1,20 @@
+
+{% for data in unit %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.nama}}</td>
+        <td>
+            <button type="button" class="btn btn-warning js-update-unit" data-url="{% url 'p_unit:update' data.id %}">
+                <span class="fa fa-pencil-square"></span> Edit
+            </button>
+            <button type="button" class="btn btn-danger js-delete-unit" data-url="{% url 'p_unit:delete' data.id %}">
+                <span class="fa fa-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3" class="text-center bg-warning">No Data</td>
+    </tr>
+{% endfor %}
+    

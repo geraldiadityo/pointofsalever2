@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <button class="button" class="close" data-dismiss="modal" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Data Item</h4>
+</div>
+<div class="modal-body">
+    <table class="table table-responsive table-bordered table-striped" id="table-item-for-stok">
+        <thead>
+            <tr>
+                <th>Nama Item</th>
+                <th>Kategori</th>
+                <th>Unit</th>
+                <th>Stok</th>
+                <th>ACT</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for data in item %}
+                <tr>
+                    <td>{{data.nama}}</td>
+                    <td>{{data.kategori}}</td>
+                    <td>{{data.unit}}</td>
+                    <td>{{data.stok}}</td>
+                    <td>
+                        <button type="button" id="select-item" class="btn btn-sm btn-info js-dataitem-take"
+                        data-item="{{data.id}}"
+                        data-unit="{{data.unit}}"
+                        data-stok="{{data.stok}}"
+                        data-hargaawal="{{data.hargaawal}}"><span class="fa fa-check"></span> Pilih</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="bg-warning text-center">No Data</td>
+                </tr>
+            {% endfor %}
+                
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+</div>
