@@ -1,0 +1,22 @@
+
+{% for data in akunlist %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.kode_akun}}</td>
+        <td>{{data.nama_akun}}</td>
+        <td>{{data.kategori}}</td>
+        <td>
+            <button type="button" class="btn btn-success js-akun-edit" data-url="{% url 'k_akun:edit' data.id %}">
+                <span class="fa fa-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-danger js-akun-delete" data-url="{% url 'k_akun:delete' data.id %}">
+                <span class="fa fa-trash"></span> Delete
+            </button>
+        </td>
+    </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5" class="bg-warning text-center">Empty Data</td>
+        </tr>
+{% endfor %}
+

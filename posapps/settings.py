@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'p_unit',
     'p_kategori',
     'supplier',
+    'k_akun',
     'pengguna.apps.PenggunaConfig',
 ]
 

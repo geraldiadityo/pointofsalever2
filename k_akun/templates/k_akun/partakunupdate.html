@@ -1,0 +1,16 @@
+<form action="{% url 'k_akun:edit' form.instance.pk %}" method="POST" class="js-akun-update-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Edit Akun</h4>
+    </div>
+    <div class="modal-body">
+        {% include 'k_akun/akun_form.html' %}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success">Update</button>
+    </div>
+</form>

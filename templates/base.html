@@ -162,6 +162,38 @@
             </a>
         </li>
         <li class="treeview 
+        {% if request.path == '/akun/' or request.path == '/bukubesar/' or request.path == '/neracasaldo/' %}
+          active
+        {% endif %}">
+          <a href="#">
+            <i class="fa fa-money"></i>
+            <span>Keuangan</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li 
+            {% if request.path == '/akun/' %}
+              class="active"
+            {% endif %}
+              ><a href="{% url 'k_akun:manage' %}"><i class="fa fa-circle-o"></i> Akun</a></li>
+            
+            <li 
+            {% if request.path == '/product-unit/' %}
+              class="active"
+            {% endif %}
+              ><a href="#"><i class="fa fa-circle-o"></i> Buku Besar</a></li>
+            <li 
+            {% if request.path == '/product-item/' %}
+              class="active"
+            {% endif %}
+              ><a href="#"><i class="fa fa-circle-o"></i> Neraca Saldo</a></li>
+              
+              
+          </ul>
+        </li>
+        <li class="treeview 
         {% if request.path == '/product-kategori/' or request.path == '/product-unit/' or request.path == '/product-item/' %}
           active
         {% endif %}">
