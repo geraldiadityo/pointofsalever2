@@ -1,0 +1,21 @@
+{% load custome_render %}
+{% load custome_tags %}
+{% for data in tgl_list %}
+    <tr>
+        <td>{{data|date:'Y-m-d'}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% loadDataAkunTgl tgl=data|date:'Y-m-d' akun=akun %}
+
+{% endfor %}
+    <tr>
+        <td colspan="2" class="text-center">Total</td>
+        <td class="text-center">{{total_debet|to_rupiah}}</td>
+        <td class="text-center">{{total_kredit|to_rupiah}}</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="text-center"><b>Saldo <span id="jenis_akun"></span></b></td>
+        <td colspan="2" class="text-center"><b>{{total_saldo|to_rupiah}}</b></td>
+    </tr>

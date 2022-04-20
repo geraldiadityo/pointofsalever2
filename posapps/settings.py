@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'supplier',
     'k_akun',
     'jurnalumum',
+    'bukubesar',
     'pengguna.apps.PenggunaConfig',
 ]
 

@@ -1,0 +1,18 @@
+{% load custome_tags %}
+
+{% for data in datalist %}
+    <tr>
+        <td></td>
+        <td>{{data.ket}}</td>
+        
+        {% if data.tipe == 'Debet' %}
+            <td>{{data.nominal|to_rupiah}}</td>
+            <td>Rp 0.</td>
+            {% else %}
+                <td>Rp 0</td>
+                <td>{{data.nominal|to_rupiah}}</td>
+        {% endif %}
+            
+    </tr>
+{% endfor %}
+    

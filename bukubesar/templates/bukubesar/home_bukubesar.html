@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+    {{page_title}}
+{% endblock page_title %}
+
+{% block content %}
+    <div class="box-header">
+        <h3 class="box-title">{{page_title}}</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body">
+                    <p>Akun List:</p>
+                    <ul class="list-group list-group-unbordered">
+                        
+                        {% for data in akun_list %}
+                            <li class="list-group-item"><button type="button" class="btn btn-sm btn-default js-load-table" data-id="{{data.id}}" data-nama="{{data.nama_akun}}" data-url="{% url 'bukubesar:get_table' %}">
+                                <span class="fa fa-tasks"></span> {{data.nama_akun}}
+                            </button></li>
+                        {% endfor %}
+                            
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-body">
+                    Nama Akun : <span id="nama_akun"></span>
+                    <table class="table table-bordered table-striped table-responsive" id="table-bukubesar">
+                        <thead>
+                            <tr>
+                                <th>Tgl Transaksi</th>
+                                <th>Keterangan</th>
+                                <th>Debet</th>
+                                <th>Kredit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% include 'bukubesar/data_table.html' %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block javascripts %}
+    <script src="{% static 'js/keuangan/bukubesar/bukubesar_my.js' %}"></script>
+{% endblock javascripts %}
+    
