@@ -162,7 +162,7 @@
             </a>
         </li>
         <li class="treeview 
-        {% if request.path == '/akun/' or request.path == '/bukubesar/' or request.path == '/neracasaldo/' %}
+        {% if request.path == '/akun/' or request.path == '/jurnal-umum/' or request.path == '/neracasaldo/' %}
           active
         {% endif %}">
           <a href="#">
@@ -180,10 +180,10 @@
               ><a href="{% url 'k_akun:manage' %}"><i class="fa fa-circle-o"></i> Akun</a></li>
             
             <li 
-            {% if request.path == '/product-unit/' %}
+            {% if request.path == '/jurnal-umum/' %}
               class="active"
             {% endif %}
-              ><a href="#"><i class="fa fa-circle-o"></i> Buku Besar</a></li>
+              ><a href="{% url 'jurnalumum:manage' %}"><i class="fa fa-circle-o"></i> Jurnal Umum</a></li>
             <li 
             {% if request.path == '/product-item/' %}
               class="active"

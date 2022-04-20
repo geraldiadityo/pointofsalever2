@@ -1,0 +1,24 @@
+{% load custome_tags %}
+{% for data in datalist %}
+    <tr>
+        <td></td>
+        <td>{{data.akun.nama_akun}}</td>
+        
+        {% if data.tipe == 'Debet' %}
+            <td>{{data.nominal|to_rupiah}}</td>
+            <td>Rp 0</td>
+            {% else %}
+                <td>Rp 0</td>
+                <td>{{data.nominal|to_rupiah}}</td>
+        {% endif %}
+        <td>
+            <button type="button" class="btn btn-sm btn-success js-jurnal-edit" data-url="{% url 'jurnalumum:edit' data.id %}">
+                <span class="fa fa-pencil"></span> Edit
+            </button>
+            <button type="button" class="btn btn-sm btn-danger js-jurnal-delete" data-url="{% url 'jurnalumum:delete' data.id %}">
+                <span class="fa fa-trash-o"></span> Delete
+            </button>
+        </td>
+    </tr>
+{% endfor %}
+    

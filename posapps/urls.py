@@ -24,6 +24,7 @@ urlpatterns = [
     path('',index,name='dashboard'),
     path('admin/', admin.site.urls),
     path('akun/',include('k_akun.urls',namespace='k_akun')),
+    path('jurnal-umum/',include('jurnalumum.urls',namespace='jurnalumum')),
     path('supplier/',include('supplier.urls',namespace='supplier')),
     path('product-kategori/',include('p_kategori.urls',namespace='p_kategori')),
     path('product-unit/',include('p_unit.urls',namespace='p_unit')),

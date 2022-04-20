@@ -1,0 +1,16 @@
+<form action="{% url 'jurnalumum:delete' jurnal.id %}" method="POST" class="js-jurnal-delete-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Delete Transaksi</h4>
+    </div>
+    <div class="modal-body">
+        <p class="lead">apakah anda yakin ingin menghapus data transaksi <b>{{jurnal.akun.nama_akun}}</b>di tanggal <b>{{jurnal.tgl|date:'Y-m-d'}}</b> ?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-danger">Delete Transaksi</button>
+    </div>
+</form>

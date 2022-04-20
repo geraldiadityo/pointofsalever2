@@ -1,0 +1,17 @@
+{% load custome_tags %}
+{% load custome_filter %}
+{% for tgl in tgl_jurnal %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{tgl|date:'Y-m-d'}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% loadByTgl tgl|date:'Y-m-d' %}
+{% endfor %}
+    <tr>
+        <td colspan="3" class="text-center bg-gray"><b>Total</b></td>
+        <td class="text-center bg-gray"><b>{{total_debet|to_rupiah}}</b></td>
+        <td class="text-center bg-gray"><b>{{total_kredit|to_rupiah}}</b></td>
+    </tr>
