@@ -26,6 +26,7 @@ urlpatterns = [
     path('akun/',include('k_akun.urls',namespace='k_akun')),
     path('jurnal-umum/',include('jurnalumum.urls',namespace='jurnalumum')),
     path('buku-besar/',include('bukubesar.urls',namespace='bukubesar')),
+    path('neraca-saldo/',include('neracasaldo.urls',namespace='neracasaldo')),
     path('supplier/',include('supplier.urls',namespace='supplier')),
     path('product-kategori/',include('p_kategori.urls',namespace='p_kategori')),
     path('product-unit/',include('p_unit.urls',namespace='p_unit')),

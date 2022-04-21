@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'k_akun',
     'jurnalumum',
     'bukubesar',
+    'neracasaldo',
     'pengguna.apps.PenggunaConfig',
 ]
 

@@ -1,0 +1,24 @@
+{% load custome_tags %}
+{% load custome_filter_back %}
+
+{% for data in akunlist %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{data.kode_akun}}</td>
+        <td>{{data.nama_akun}}</td>
+        
+        {% if data.kategori == 'Debet' %}
+            <td>{% getTotalSaldo data.id %}</td>
+            <td>Rp 0</td>
+            {% else %}
+                <td>Rp 0</td>
+                <td>{% getTotalSaldo data.id %}</td>
+        {% endif %}
+            
+    </tr>
+{% endfor %}
+    <tr>
+        <td colspan="3" class="text-center bg-gray"><b>Total</b></td>
+        <td class="text-center bg-gray"><b>{{total_saldo_debet|to_rupiah}}</b></td>
+        <td class="text-center bg-gray"><b>{{total_saldo_kredit|to_rupiah}}</b></td>
+    </tr>

@@ -162,7 +162,7 @@
             </a>
         </li>
         <li class="treeview 
-        {% if request.path == '/akun/' or request.path == '/jurnal-umum/' or request.path == '/buku-besar/' %}
+        {% if request.path == '/akun/' or request.path == '/jurnal-umum/' or request.path == '/buku-besar/' or request.path == '/neraca-saldo/' %}
           active
         {% endif %}">
           <a href="#">
@@ -190,7 +190,11 @@
             {% endif %}
               ><a href="{% url 'bukubesar:home' %}"><i class="fa fa-circle-o"></i> Buku Besar</a></li>
               
-              
+              <li 
+              {% if request.path == '/neraca-saldo/' %}
+                class="active"
+              {% endif %}
+                ><a href="{% url 'neracasaldo:view' %}"><i class="fa fa-circle-o"></i> Neraca Saldo</a></li>
           </ul>
         </li>
         <li class="treeview 
