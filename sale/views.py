@@ -15,6 +15,8 @@ from .forms import (
     KeranjangForm,
 )
 
+from jurnalumum.models import Jurnal
+
 from pengguna.decorators import allowed_user
 # Create your views here.
 
@@ -48,6 +50,7 @@ def saleView(request):
     if request.method == 'POST':
         form_sale = SaleForm(request.POST,initial={'invoice':numberinvoice})
         if form_sale.is_valid():
+            pendapatan = int(form_sale.cleaned_data.get('total_pendapatan'))
             form_sale.save()
             for i in datakeranjang:
                 itemkeranjang = KeranjangModel.objects.get(id=i.id)
@@ -55,7 +58,18 @@ def saleView(request):
                 stokawal = stok.stok
                 stok.stok = stokawal - i.qty
                 stok.save()
-
+            tgl_now = datetime.datetime.now().date()
+            datajurnal = Jurnal.objects.filter(tgl=tgl_now).filter(ket='Pendapatan Penjualan')
+            if datajurnal.exists():
+                for x in datajurnal:
+                    new_update_jurnal = datajurnal.get(akun=x.akun)
+                    new_update_jurnal.nominal = int(new_update_jurnal.nominal) + pendapatan
+                    new_update_jurnal.save()
+            else:
+                new_jurnal = Jurnal.objects.create(tgl=tgl_now,akun_id='1',ket='Pendapatan Penjualan',ref='',nominal=pendapatan,tipe='Debet')
+                new_jurnal.save()
+                new_jurnal = Jurnal.objects.create(tgl=tgl_now,akun_id='4',ket='Pendapatan Penjualan',ref='',nominal=pendapatan,tipe='Kredit')
+                new_jurnal.save()
             return HttpResponse(
                 '<script>confirm("Cetak Faktur ?") ? window.location="'+str(reverse_lazy('sale:cetak_faktur'))+'" : window.location="'+str(reverse_lazy('sale:delete-all-cart'))+'" </script>'
             )
