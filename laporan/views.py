@@ -254,3 +254,14 @@ def stokOpname(request):
     }
     return render(request, 'laporan/laporan_stok_opname',context)
 
+@login_required(login_url='pengguna:login')
+@allowed_user(allowed_roles=['admin'])
+def ringkasanLaporan(request):
+    pembelian = StokM.objects.filter(tipe='in')
+    penjualan = SaleModel.objects.all()
+    context = {
+        'data_pembelian':pembelian,
+        'data_penjualan':penjualan,
+        'page_title':'Ringkasan Laporan',
+    }
+    return render(request)
